@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-react
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: sample-react
+  template:
+    metadata:
+      labels:
+        app: sample-react
+    spec:
+      containers:
+        - name: sample-react
+          image: nithish1116.azurecr.io/sample-react:latest
+          ports:
+            - containerPort: 80
+      imagePullSecrets:
+        - name: acr-secret
